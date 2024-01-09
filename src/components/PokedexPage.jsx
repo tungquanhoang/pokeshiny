@@ -1,10 +1,13 @@
 import React from 'react';
+import './PokedexPage.css';
+import Pokemon from './Pokemon';
 
-export default function PokedexPage({ goToNextPage, goToPreviousPage }) {
+export default function PokedexPage({ pokemons }) {
   return (
-    <div>
-      {goToPreviousPage && <button type="button" onClick={goToPreviousPage}>Previous</button>}
-      {goToNextPage && <button type="button" onClick={goToNextPage}>Next</button>}
+    <div className="pokedex-page">
+      {pokemons.map((p) => (
+        <Pokemon pokemon={p} />
+      ))}
     </div>
   );
 }

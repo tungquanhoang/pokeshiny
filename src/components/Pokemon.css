@@ -1,0 +1,26 @@
+
+.pokemon {
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    padding: 10px;
+    text-align: center;
+    background-color: #e7fddd;
+}
+
+.pokemon-id-name {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 5px;
+}
+
+.pokemon-sprites {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.pokemon img {
+    height: 100px;
+    width: auto;
+}
