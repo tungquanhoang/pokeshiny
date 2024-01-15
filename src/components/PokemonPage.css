@@ -1,0 +1,12 @@
+.poke-types {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.poke-types img {
+    height: 20px;
+    width: auto;
+}
