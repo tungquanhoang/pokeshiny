@@ -4,4 +4,9 @@
     grid-gap: 20px;
     padding: 20px;
 }
+
+.pokedex-page a {
+    text-decoration: none;
+    color: black;
+}
   
