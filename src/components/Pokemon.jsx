@@ -6,14 +6,14 @@ export default function Pokemon({ pokemon }) {
   const { sprites } = pokemon;
 
   return (
-    <div className="pokemon" key={pokemon.id}>
-      <div className="pokemon-id-name">
+    <div className="pokedex-pokemon" key={pokemon.id}>
+      <div className="pokedex-pokemon-id-name">
         {pokemon.id}
         {' - '}
         {pokemon.name}
       </div>
       <PokemonType pokemon={pokemon} />
-      <div className="pokemon-sprites">
+      <div className="pokedex-pokemon-sprites">
         {sprites.front_default && <img src={sprites.front_default} alt={pokemon.name} />}
         {sprites.front_shiny && <img src={sprites.front_shiny} alt={pokemon.name} />}
       </div>

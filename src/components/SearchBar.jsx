@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './SearchBar.css';
 
 export default function SearchBar() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,7 +19,7 @@ export default function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="search-bar" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Enter Pokémon name"

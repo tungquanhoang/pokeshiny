@@ -1,0 +1,19 @@
+.search-bar {
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px;
+}
+  
+input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+button {
+    font-size: 16px;
+}

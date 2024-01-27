@@ -1,26 +1,26 @@
 
-.pokemon {
-    border: 1px solid #ddd;
+.pokedex-pokemon {
+    border: 2px solid #ddd;
     border-radius: 30px;
     padding: 10px;
     text-align: center;
-    background-color: #e7fddd;
+    background-color: #f5fac6;
 }
 
-.pokemon-id-name {
+.pokedex-pokemon-id-name {
     font-size: 20px;
     font-weight: bold;
     text-transform: capitalize;
     margin: 5px;
 }
 
-.pokemon-sprites {
+.pokedex-pokemon-sprites {
     display: flex;
     justify-content: center;
     gap: 5px;
 }
 
-.pokemon img {
+.pokedex-pokemon-sprites img {
     height: 100px;
     width: auto;
 }

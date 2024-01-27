@@ -127,7 +127,7 @@ export default function Pokedex() {
   };
 
   return (
-    <div>
+    <div className="pokedex">
       <PokedexPageButtons goToPage={goToPage} />
       {loading ? 'Loading...' : <PokedexPage pokemons={pokemons} />}
       <PokedexPageButtons goToPage={goToPage} />
