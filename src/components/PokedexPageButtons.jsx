@@ -1,23 +1,20 @@
 import React from 'react';
 
-export default function PokedexPageButtons({
-  goToNextPage, goToPreviousPage, goToPage, totalPages,
-}) {
+export default function PokedexPageButtons({ goToPage }) {
+  const regionNames = ['kanto', 'johto', 'hoenn', 'sinnoh', 'unova', 'kalos', 'alola', 'galar', 'hisui', 'paldea', 'other'];
   // Generate page buttons
   const pageButtons = [];
-  for (let i = 1; i <= totalPages; i += 1) {
+  for (let i = 0; i < regionNames.length; i += 1) {
     pageButtons.push(
-      <button type="button" key={i} onClick={() => goToPage(i)}>
-        {i}
+      <button type="button" key={regionNames[i]} onClick={() => goToPage(regionNames[i])}>
+        {regionNames[i]}
       </button>,
     );
   }
 
   return (
     <div>
-      {goToPreviousPage && <button type="button" onClick={goToPreviousPage}>Previous</button>}
       {pageButtons}
-      {goToNextPage && <button type="button" onClick={goToNextPage}>Next</button>}
     </div>
   );
 }

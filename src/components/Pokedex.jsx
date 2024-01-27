@@ -4,18 +4,63 @@ import PokedexPage from './PokedexPage';
 import PokedexPageButtons from './PokedexPageButtons';
 
 export default function Pokedex() {
-  const numPokemons = 96;
   const [pokemons, setPokemons] = useState([]);
-  const [currentPageUrl, setCurrentPageUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${numPokemons}&offset=0`);
-  const [nextPageUrl, setNextPageUrl] = useState('');
-  const [previousPageUrl, setPreviousPageUrl] = useState('');
+  const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'); // default for kanto
   const [loading, setLoading] = useState(true);
-  const [totalPokemons, setTotalPokemons] = useState(0);
+
+  // Ids of pokemons in each region, which is used to divide the pokedex into regions
+  const regions = {
+    kanto: {
+      start: 1,
+      end: 151,
+    },
+    johto: {
+      start: 152,
+      end: 251,
+    },
+    hoenn: {
+      start: 252,
+      end: 386,
+    },
+    sinnoh: {
+      start: 387,
+      end: 493,
+    },
+    unova: {
+      start: 494,
+      end: 649,
+    },
+    kalos: {
+      start: 650,
+      end: 721,
+    },
+    alola: {
+      start: 722,
+      end: 809,
+    },
+    galar: {
+      start: 810,
+      end: 898,
+    },
+    hisui: {
+      start: 899,
+      end: 905,
+    },
+    paldea: {
+      start: 906,
+      end: 1010,
+    },
+    other: {
+      start: 1011,
+      end: 9999, // actually an upper bound to show all other pokemons/forms
+    },
+  };
+
+  // Cache
+  const cache = {};
 
   // Function to get pokemon data by calling to PokeAPI using their URL
   // Wait for all pokemons to be retrieved before adding them to the pokemons array
-  const cache = {};
-
   function getPokemons(data) {
     const requests = data.map((p) => {
       // Check if the data is in the cache
@@ -41,17 +86,6 @@ export default function Pokedex() {
       });
   }
 
-  // Get the total number of pokemons just once
-  useEffect(() => {
-    // Get the total number of Pokémon on initial load
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=1')
-      .then((res) => {
-        setTotalPokemons(res.data.count);
-      });
-  }, []);
-
-  const totalPages = Math.ceil(totalPokemons / numPokemons);
-
   // Function get another page of pokemons when the current page URL changes
   useEffect(() => {
     setLoading(true);
@@ -63,8 +97,6 @@ export default function Pokedex() {
       }),
     }).then((res) => {
       setLoading(false);
-      setNextPageUrl(res.data.next);
-      setPreviousPageUrl(res.data.previous);
       getPokemons(res.data.results);
     }).catch((error) => {
       if (axios.isCancel(error)) {
@@ -77,29 +109,28 @@ export default function Pokedex() {
     return () => cancel && cancel();
   }, [currentPageUrl]);
 
-  function goToNextPage() {
-    setCurrentPageUrl(nextPageUrl);
-  }
+  const goToPage = (regionName) => {
+    const region = regions[regionName];
+    if (!region) {
+      console.error('Invalid region name');
+      return;
+    }
 
-  function goToPreviousPage() {
-    setCurrentPageUrl(previousPageUrl);
-  }
+    // Update the number of pokemons to fetch based on the region
+    let numRegionPokemons = region.end - region.start + 1;
+    if (region === 'other') {
+      numRegionPokemons = region.end;
+    }
 
-  const goToPage = (pageNumber) => {
-    const offset = (pageNumber - 1) * numPokemons;
-    const newPageUrl = `https://pokeapi.co/api/v2/pokemon?limit=${numPokemons}&offset=${offset}`;
+    const newPageUrl = `https://pokeapi.co/api/v2/pokemon?limit=${numRegionPokemons}&offset=${region.start - 1}`;
     setCurrentPageUrl(newPageUrl);
   };
 
   return (
     <div>
+      <PokedexPageButtons goToPage={goToPage} />
       {loading ? 'Loading...' : <PokedexPage pokemons={pokemons} />}
-      <PokedexPageButtons
-        goToNextPage={nextPageUrl ? goToNextPage : null}
-        goToPreviousPage={previousPageUrl ? goToPreviousPage : null}
-        totalPages={totalPages}
-        goToPage={goToPage}
-      />
+      <PokedexPageButtons goToPage={goToPage} />
     </div>
   );
 }
