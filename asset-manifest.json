@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-gh-pages/static/css/main.d7031e47.css",
+    "main.js": "/react-gh-pages/static/js/main.bb82d6a5.js",
+    "static/media/Carnac-Light.otf": "/react-gh-pages/static/media/Carnac-Light.8fa7584e8b1431e1665a.otf",
+    "index.html": "/react-gh-pages/index.html",
+    "main.d7031e47.css.map": "/react-gh-pages/static/css/main.d7031e47.css.map",
+    "main.bb82d6a5.js.map": "/react-gh-pages/static/js/main.bb82d6a5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7031e47.css",
+    "static/js/main.bb82d6a5.js"
+  ]
+}
