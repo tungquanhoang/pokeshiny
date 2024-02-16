@@ -1,7 +1,9 @@
+/* eslint-disable react/self-closing-comp */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PokedexPage from './PokedexPage';
 import PokedexPageButtons from './PokedexPageButtons';
+import './Pokedex.css';
 
 export default function Pokedex() {
   const [pokemons, setPokemons] = useState([]);

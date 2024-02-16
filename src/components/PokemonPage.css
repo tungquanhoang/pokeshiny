@@ -26,7 +26,7 @@ button {
 }
 
 .pokemon-page {
-    width: 80vh;
+    width: 100vh;
 }
 .pokemon {
     text-align: center;
@@ -39,6 +39,9 @@ button {
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
     background-color: #ffffff; /* White background color */
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .pokemon-id-name {

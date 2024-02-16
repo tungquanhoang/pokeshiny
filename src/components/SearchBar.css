@@ -1,3 +1,9 @@
+@font-face {
+    font-family: carnacLight;
+    src: url("../assets/fonts/Carnac-Light.otf");
+    font-display: swap;
+}
+
 .search-bar {
     display: flex;
     margin: 20px;
@@ -12,6 +18,7 @@ input {
     padding: 10px;
     font-size: 16px;
     border-radius: 20px;
+    font-family: carnacLight;
 }
 
 button {
